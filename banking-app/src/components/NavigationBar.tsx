@@ -2,6 +2,8 @@ import { FC } from "react";
 
 import { AppBar, Toolbar, Typography, Link, Button } from "@mui/material";
 
+import { Link as RouterLink } from "react-router-dom";
+
 type NavigationBarProps = {};
 
 export const NavigationBar: FC<NavigationBarProps> = () => {
@@ -20,21 +22,28 @@ export const NavigationBar: FC<NavigationBarProps> = () => {
           <Link
             variant="button"
             color="text.primary"
-            href="#"
             sx={{ my: 1, mx: 1.5 }}
+            component={RouterLink}
+            to="/"
           >
             Last transactions
           </Link>
           <Link
             variant="button"
             color="text.primary"
-            href="#"
             sx={{ my: 1, mx: 1.5 }}
+            component={RouterLink}
+            to="/customers"
           >
             View customers
           </Link>
         </nav>
-        <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+        <Button
+          component={RouterLink}
+          to="/transfer"
+          variant="outlined"
+          sx={{ my: 1, mx: 1.5 }}
+        >
           Make a transation
         </Button>
       </Toolbar>
