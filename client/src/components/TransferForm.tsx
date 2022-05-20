@@ -5,12 +5,15 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { createTransfer } from "../firebase/transfers";
-import { onCustomersUpdate } from "../firebase/customers";
+import {
+  onCustomersUpdate,
+  updateCustomerBalance,
+} from "../firebase/customers";
 
 export const TransferForm = () => {
   const [sender, setSender] = React.useState<Customer | null>(null);
   const [receiver, setReceiver] = React.useState<Customer | null>(null);
-  const [amount, setAmount] = React.useState(0);
+  const [amount, setAmount] = React.useState<number | null>(0);
   const [customers, setCustomers] = React.useState<Customer[]>([]);
 
   React.useEffect(() => {
@@ -21,13 +24,15 @@ export const TransferForm = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log({
-            sender,
-            receiver,
-            amount,
-          });
-          if (sender !== null && receiver !== null && amount > 0) {
+          if (
+            sender !== null &&
+            receiver !== null &&
+            amount !== null &&
+            amount > 0
+          ) {
             createTransfer(sender, receiver, amount);
+            updateCustomerBalance(sender, sender.currentBalance - amount);
+            updateCustomerBalance(receiver, receiver.currentBalance + amount);
           } else {
             console.log("error, data is not correct");
           }
@@ -43,6 +48,7 @@ export const TransferForm = () => {
           onChange={(e, selectedCustomer) => {
             setSender(selectedCustomer);
             if (
+              amount !== null &&
               selectedCustomer !== null &&
               selectedCustomer.currentBalance < amount
             ) {
@@ -68,9 +74,14 @@ export const TransferForm = () => {
           label="Amount"
           variant="outlined"
           sx={{ width: 300, marginTop: 2 }}
-          value={amount}
+          value={amount === null ? "" : amount}
           onChange={(event) => {
-            setAmount(parseInt(event.target.value, 10));
+            const amount = parseInt(event.target.value, 10);
+            if (isNaN(amount)) {
+              setAmount(null);
+            } else {
+              setAmount(amount);
+            }
           }}
         />
         <Button variant="outlined" type="submit">

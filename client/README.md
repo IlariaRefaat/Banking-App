@@ -10,8 +10,7 @@
 ## TODO
 
 - Improve UI (margins, alignments, fonts)
-- Create Customer page (display: info plus current balance)
-- Change customer balance when we create a new transfer
+- Add success message on transfer form + go to receiver profile
 - Validation
   - Form fields are required
   - Amount must be > 0

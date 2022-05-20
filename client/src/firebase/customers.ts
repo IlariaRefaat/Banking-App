@@ -1,4 +1,4 @@
-import { getDatabase, ref, onValue, get, child } from "firebase/database"
+import { getDatabase, ref, onValue, get, child, update } from "firebase/database"
 import { Customer } from "../models/Customer";
 
 export type CustomersUpdateCallback = (data: Customer[]) => void
@@ -26,4 +26,12 @@ export const getCustomer = async (id: string): Promise<Customer | null> => {
     } else {
         return null;
     }
+}
+export const updateCustomerBalance = (customer: Customer, newAmount: number) => {
+    const db = getDatabase();
+    const path = `customers/${customer.id}/currentBalance`;
+    const updates = {
+        [path]: newAmount,
+    };
+    return update(ref(db), updates);
 }
