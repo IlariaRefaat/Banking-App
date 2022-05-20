@@ -9,8 +9,8 @@ import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebase/config";
 
 function App() {
-  // // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  // Initialize Firebase
+  initializeApp(firebaseConfig);
   return (
     <div className="App">
       <CssBaseline />

@@ -1,4 +1,3 @@
-import { ExecOptionsWithStringEncoding } from "child_process";
 import { getDatabase, ref, onValue, set, } from "firebase/database"
 import { Customer } from "../models/Customer";
 import { Transfer } from "../models/Transfer";
