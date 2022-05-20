@@ -7,6 +7,7 @@ import { HomePage } from "./pages/HomePage";
 import { MakeATransferPage } from "./pages/MakeATransferPage";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebase/config";
+import { CustomerProfilePage } from "./pages/CustomerProfilePage";
 
 function App() {
   // Initialize Firebase
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/customers" element={<CustomersPage />} />
+          <Route path="/customers/:id" element={<CustomerProfilePage />} />
           <Route path="/transfer" element={<MakeATransferPage />} />
         </Routes>
       </BrowserRouter>
