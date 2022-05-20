@@ -1,10 +1,9 @@
+import { CssBaseline } from "@mui/material";
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NavigationBar } from "./components/NavigationBar";
-import { TransfersList } from "./components/TransfersList";
-import { HomePage } from "./pages/HomePage";
-import { CssBaseline, Container, Typography } from "@mui/material";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CustomersPage } from "./pages/CustomersPage";
+import { HomePage } from "./pages/HomePage";
 import { MakeATransferPage } from "./pages/MakeATransferPage";
 
 function App() {
