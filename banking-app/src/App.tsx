@@ -4,6 +4,8 @@ import { TransfersList } from "./components/TransfersList";
 import { HomePage } from "./pages/HomePage";
 import { CssBaseline, Container, Typography } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CustomersPage } from "./pages/CustomersPage";
+import { MakeATransferPage } from "./pages/MakeATransferPage";
 
 function App() {
   return (
@@ -13,8 +15,8 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* <Route path="customers" element={<CustomersPage />} /> */}
-          {/* <Route path="transfer" element={<TransferPage />} /> */}
+          <Route path="/customers" element={<CustomersPage />} />
+          <Route path="/transfer" element={<MakeATransferPage />} />
         </Routes>
       </BrowserRouter>
     </div>
