@@ -16,7 +16,7 @@ export const CustomersList = () => {
   }, []);
 
   return (
-    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <List sx={{ width: "100%", bgcolor: "background.paper" }}>
       {customers.map((customer) => {
         return (
           <ListItem

@@ -1,10 +1,14 @@
 import { CustomersList } from "../components/CustomersList";
-import { Container, Typography } from "@mui/material";
+import { Container, Paper, Typography } from "@mui/material";
 export const CustomersPage = () => {
   return (
     <Container>
-      <Typography variant="h3">List of Customers</Typography>
-      <CustomersList />
+      <Typography variant="h3" sx={{ marginTop: 4, marginBottom: 4 }}>
+        List of Customers
+      </Typography>
+      <Paper>
+        <CustomersList />
+      </Paper>
     </Container>
   );
 };
