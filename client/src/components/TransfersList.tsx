@@ -7,8 +7,16 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { transfers } from "../mocks/transfers";
+import { Transfer } from "../models/Transfer";
+import { onTransferUpdate } from "../firebase/transfers";
 
 export const TransfersList = () => {
+  const [transfers, setTransfer] = React.useState<Transfer[]>([]);
+
+  React.useEffect(() => {
+    onTransferUpdate(setTransfer);
+  }, []);
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
