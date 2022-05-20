@@ -2,6 +2,6 @@
 
 ## Pages
 
-- Home / last transactions
+- Home / last transfers
 - Customers
 - Make a transfer

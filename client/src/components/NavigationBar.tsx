@@ -26,7 +26,7 @@ export const NavigationBar: FC<NavigationBarProps> = () => {
             component={RouterLink}
             to="/"
           >
-            Last transactions
+            Last transfers
           </Link>
           <Link
             variant="button"
