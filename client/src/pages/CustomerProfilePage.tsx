@@ -1,4 +1,4 @@
-import { Card, CardContent, Container, Paper, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router";
 import { getCustomer } from "../firebase/customers";
