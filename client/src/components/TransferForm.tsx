@@ -1,16 +1,21 @@
 import * as React from "react";
 
-import { customers } from "../mocks/customers";
 import { Customer } from "../models/Customer";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { createTransfer } from "../firebase/transfers";
+import { onCustomersUpdate } from "../firebase/customers";
 
 export const TransferForm = () => {
   const [sender, setSender] = React.useState<Customer | null>(null);
   const [receiver, setReceiver] = React.useState<Customer | null>(null);
   const [amount, setAmount] = React.useState(0);
+  const [customers, setCustomers] = React.useState<Customer[]>([]);
 
+  React.useEffect(() => {
+    onCustomersUpdate(setCustomers);
+  }, []);
   return (
     <div>
       <form
@@ -21,6 +26,11 @@ export const TransferForm = () => {
             receiver,
             amount,
           });
+          if (sender !== null && receiver !== null && amount > 0) {
+            createTransfer(sender, receiver, amount);
+          } else {
+            console.log("error, data is not correct");
+          }
         }}
       >
         <Autocomplete
