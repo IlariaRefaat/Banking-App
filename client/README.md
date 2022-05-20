@@ -9,7 +9,6 @@
 
 ## TODO
 
-- Improve UI (margins, alignments, fonts)
 - Add success message on transfer form + go to receiver profile
 - Validation
   - Form fields are required
